@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:login_tutorial/services/encrypt_decrypt.dart';
 
-final site = "https://demo.bingertech.com";
+final site = "Your API"; // Paste Your API Here
 final api = "$site/manage.php";
 final profile = "$site/userdatadisplay.php";
 
