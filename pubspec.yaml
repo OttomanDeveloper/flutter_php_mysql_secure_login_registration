@@ -23,8 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.3
   encrypt: ^5.0.0
-  cupertino_icons: ^1.0.2
   http: ^0.13.3
 
 dev_dependencies:
