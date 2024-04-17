@@ -6,7 +6,7 @@ final iv = IV.fromUtf8('dhjfjdshgfdkjsfs'); //16 Charactor
 class Security {
   final String text;
 
-  Security({this.text});
+  Security({required this.text});
 
   String encrypt() {
     final encrypter = Encrypter(AES(key, mode: AESMode.cbc));

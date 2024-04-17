@@ -2,15 +2,16 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:login_tutorial/services/encrypt_decrypt.dart';
 
-final site = "Your API"; // Paste Your API Here
-final api = "$site/manage.php";
-final profile = "$site/userdatadisplay.php";
+const site = "Your API"; // Paste Your API Here
+const api = "$site/manage.php";
+const profile = "$site/userdatadisplay.php";
 
 class DatabaseRequest {
   final String fullName;
   final String password;
   final String username;
-  DatabaseRequest({this.fullName, this.password, this.username});
+  DatabaseRequest(
+      {required this.fullName, required this.password, required this.username});
 
   Future<String> request() async {
     try {
@@ -35,9 +36,9 @@ class DatabaseRequest {
 class GetProfile {
   final String username;
 
-  GetProfile({this.username});
+  GetProfile({required this.username});
 
-  Future getProfile() async {
+  Future<dynamic> getProfile() async {
     try {
       final response = await http.post(Uri.parse(profile), body: {
         'username': Security(text: username).encrypt(),

@@ -3,10 +3,10 @@ import 'package:login_tutorial/services/encrypt_decrypt.dart';
 import 'package:login_tutorial/services/loginRequest.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -18,6 +18,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String name = '';
   String user = '';
+
+  @override
+  void dispose() {
+    fullName.dispose();
+    username.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ).request();
                       setState(() {});
                     },
-                    child: Text(
+                    child: const Text(
                       'Login Now',
                       style: TextStyle(
                         color: Colors.white,
@@ -92,26 +100,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         setState(() {});
                       });
                     },
-                    child: Text(
+                    child: const Text(
                       'Get Profile',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ],
               ),
               Text(
                 'Fullname: $name',
-                style: TextStyle(
-                  fontSize: size.height * 0.03,
-                ),
+                style: TextStyle(fontSize: size.height * 0.03),
               ),
               Text(
                 'UserName: $user',
-                style: TextStyle(
-                  fontSize: size.height * 0.03,
-                ),
+                style: TextStyle(fontSize: size.height * 0.03),
               ),
             ],
           ),
@@ -122,7 +124,11 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class CustomInput extends StatelessWidget {
-  const CustomInput({Key key, this.hint, this.controller}) : super(key: key);
+  const CustomInput({
+    super.key,
+    required this.hint,
+    required this.controller,
+  });
 
   final String hint;
   final TextEditingController controller;
@@ -131,9 +137,7 @@ class CustomInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      decoration: InputDecoration(
-        hintText: hint,
-      ),
+      decoration: InputDecoration(hintText: hint),
     );
   }
 }
